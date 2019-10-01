@@ -2,14 +2,12 @@
 // Find earthquakes larger than 7 degrees, in the last thousand years, in the North American continent
 var url = "https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=1000-09-24%2000:00:00&endtime=2019-10-01%2023:59:59&maxlatitude=71.658&minlatitude=6.734&maxlongitude=-47.813&minlongitude=-168.047&minmagnitude=7&orderby=time-asc";
 
-// Center map on Winnipeg, Canada
-var centerCity = { latitude: 49.8994, longitude: -97.1391 };
-
-// Marker size: 3 sizes... between 7-7.9, 8-8.9, 9 or greater
+// Marker size
 function markerSize(magnitude) {
 	return magnitude * magnitude * 950;
 }
 
+// Marker color
 function markerColor(magnitude) {
 	if (magnitude >= 9) {
 		return "red";
@@ -22,6 +20,8 @@ function markerColor(magnitude) {
 	}
 }
 
+// Center map on Winnipeg, Canada, with a zoom far enough to see North America
+var centerCity = { latitude: 49.8994, longitude: -97.1391 };
 var myMap = L.map("map", {
 	center: [centerCity.latitude, centerCity.longitude],
 	zoom: 3
